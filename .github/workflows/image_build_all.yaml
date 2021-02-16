@@ -119,7 +119,7 @@ jobs:
           BRANCH: ${{ matrix.BRANCH }}
           VERSION: ${{ steps.time.outputs.time }}
         run: |
-          sudo mv -v /home/runner/work/pinebook-pro-images/pinebook-pro-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
+          sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d rpi4 -e $EDITION
           
           ls -lasih /var/cache/manjaro-arm-tools/img
@@ -265,7 +265,7 @@ jobs:
           BRANCH: ${{ matrix.BRANCH }}
           VERSION: ${{ steps.time.outputs.time }}
         run: |
-          sudo mv -v /home/runner/work/pinebook-pro-images/pinebook-pro-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
+          sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d rpi4 -e $EDITION
           
           ls -lasih /var/cache/manjaro-arm-tools/img
@@ -411,7 +411,7 @@ jobs:
           BRANCH: ${{ matrix.BRANCH }}
           VERSION: ${{ steps.time.outputs.time }}
         run: |
-          sudo mv -v /home/runner/work/pinebook-pro-images/pinebook-pro-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
+          sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d rpi4 -e $EDITION
           
           ls -lasih /var/cache/manjaro-arm-tools/img
@@ -557,7 +557,7 @@ jobs:
           BRANCH: ${{ matrix.BRANCH }}
           VERSION: ${{ steps.time.outputs.time }}
         run: |
-          sudo mv -v /home/runner/work/pinebook-pro-images/pinebook-pro-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
+          sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
           sudo buildarmimg -d rpi4 -e $EDITION
           
           ls -lasih /var/cache/manjaro-arm-tools/img
