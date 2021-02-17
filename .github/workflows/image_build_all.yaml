@@ -14,7 +14,8 @@ jobs:
         id: time
         uses: nanzm/get-time-action@v1.1
         with:
-          format: 'YYYYMMDDHHmm'
+          #format: 'YYYYMMDDHHmm'
+          format: 'YY.MM'
       - 
         id: release
         uses: actions/create-release@v1
