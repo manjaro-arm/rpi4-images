@@ -15,7 +15,7 @@ jobs:
         uses: nanzm/get-time-action@v1.1
         with:
           #format: 'YYYYMMDDHHmm'
-          format: 'YY.MM'
+          format: 'YY.MM-rc1'
       - 
         id: release
         uses: actions/create-release@v1
@@ -121,17 +121,17 @@ jobs:
           VERSION: ${{ steps.time.outputs.time }}
         run: |
           sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d rpi4 -e $EDITION
+          sudo buildarmimg -d rpi4 -e $EDITION -v 21.02rc1
           
           ls -lasih /var/cache/manjaro-arm-tools/img
           
           FILE_PATH=$(find /var/cache/manjaro-arm-tools/img -type f -name "*.img.xz" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PATH .
           
-          sha256sum $FILE_PATH > $(basename $FILE_PATH).sha256
+          sha1sum $FILE_PATH > $(basename $FILE_PATH).sha1
 
           echo "FILE_PATH=$(basename $FILE_PATH)" >> $GITHUB_ENV
-          echo "FILE_SHA256=$(basename $FILE_PATH).sha256" >> $GITHUB_ENV
+          echo "FILE_SHA1=$(basename $FILE_PATH).sha1" >> $GITHUB_ENV
           
           FILE_PKG=$(find /var/cache/manjaro-arm-tools/img -type f -name "*-pkgs.txt" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PKG .
@@ -148,14 +148,14 @@ jobs:
           asset_name: ${{ env.FILE_PATH }}
           asset_content_type: application/x-iso-image
       - 
-        id: upload_sha256
+        id: upload_sha1
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.prepare_release.outputs.upload_url }}
-          asset_path: ./${{ env.FILE_SHA256 }}
-          asset_name: ${{ env.FILE_SHA256 }}
+          asset_path: ./${{ env.FILE_SHA1 }}
+          asset_name: ${{ env.FILE_SHA1 }}
           asset_content_type: text/plain
       - 
         id: upload_pkg
@@ -267,17 +267,17 @@ jobs:
           VERSION: ${{ steps.time.outputs.time }}
         run: |
           sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d rpi4 -e $EDITION
+          sudo buildarmimg -d rpi4 -e $EDITION -v 21.02rc1
           
           ls -lasih /var/cache/manjaro-arm-tools/img
           
           FILE_PATH=$(find /var/cache/manjaro-arm-tools/img -type f -name "*.img.xz" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PATH .
           
-          sha256sum $FILE_PATH > $(basename $FILE_PATH).sha256
+          sha1sum $FILE_PATH > $(basename $FILE_PATH).sha1
 
           echo "FILE_PATH=$(basename $FILE_PATH)" >> $GITHUB_ENV
-          echo "FILE_SHA256=$(basename $FILE_PATH).sha256" >> $GITHUB_ENV
+          echo "FILE_SHA1=$(basename $FILE_PATH).sha1" >> $GITHUB_ENV
           
           FILE_PKG=$(find /var/cache/manjaro-arm-tools/img -type f -name "*-pkgs.txt" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PKG .
@@ -294,14 +294,14 @@ jobs:
           asset_name: ${{ env.FILE_PATH }}
           asset_content_type: application/x-iso-image
       - 
-        id: upload_sha256
+        id: upload_sha1
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.prepare_release.outputs.upload_url }}
-          asset_path: ./${{ env.FILE_SHA256 }}
-          asset_name: ${{ env.FILE_SHA256 }}
+          asset_path: ./${{ env.FILE_SHA1 }}
+          asset_name: ${{ env.FILE_SHA1 }}
           asset_content_type: text/plain
       - 
         id: upload_pkg
@@ -413,17 +413,17 @@ jobs:
           VERSION: ${{ steps.time.outputs.time }}
         run: |
           sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d rpi4 -e $EDITION
+          sudo buildarmimg -d rpi4 -e $EDITION -v 21.02rc1
           
           ls -lasih /var/cache/manjaro-arm-tools/img
           
           FILE_PATH=$(find /var/cache/manjaro-arm-tools/img -type f -name "*.img.xz" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PATH .
           
-          sha256sum $FILE_PATH > $(basename $FILE_PATH).sha256
+          sha1sum $FILE_PATH > $(basename $FILE_PATH).sha1
 
           echo "FILE_PATH=$(basename $FILE_PATH)" >> $GITHUB_ENV
-          echo "FILE_SHA256=$(basename $FILE_PATH).sha256" >> $GITHUB_ENV
+          echo "FILE_SHA1=$(basename $FILE_PATH).sha1" >> $GITHUB_ENV
           
           FILE_PKG=$(find /var/cache/manjaro-arm-tools/img -type f -name "*-pkgs.txt" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PKG .
@@ -440,14 +440,14 @@ jobs:
           asset_name: ${{ env.FILE_PATH }}
           asset_content_type: application/x-iso-image
       - 
-        id: upload_sha256
+        id: upload_sha1
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.prepare_release.outputs.upload_url }}
-          asset_path: ./${{ env.FILE_SHA256 }}
-          asset_name: ${{ env.FILE_SHA256 }}
+          asset_path: ./${{ env.FILE_SHA1 }}
+          asset_name: ${{ env.FILE_SHA1 }}
           asset_content_type: text/plain
       - 
         id: upload_pkg
@@ -559,17 +559,17 @@ jobs:
           VERSION: ${{ steps.time.outputs.time }}
         run: |
           sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d rpi4 -e $EDITION
+          sudo buildarmimg -d rpi4 -e $EDITION -v 21.02rc1
           
           ls -lasih /var/cache/manjaro-arm-tools/img
           
           FILE_PATH=$(find /var/cache/manjaro-arm-tools/img -type f -name "*.img.xz" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PATH .
           
-          sha256sum $FILE_PATH > $(basename $FILE_PATH).sha256
+          sha1sum $FILE_PATH > $(basename $FILE_PATH).sha1
 
           echo "FILE_PATH=$(basename $FILE_PATH)" >> $GITHUB_ENV
-          echo "FILE_SHA256=$(basename $FILE_PATH).sha256" >> $GITHUB_ENV
+          echo "FILE_SHA1=$(basename $FILE_PATH).sha1" >> $GITHUB_ENV
           
           FILE_PKG=$(find /var/cache/manjaro-arm-tools/img -type f -name "*-pkgs.txt" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PKG .
@@ -586,14 +586,14 @@ jobs:
           asset_name: ${{ env.FILE_PATH }}
           asset_content_type: application/x-iso-image
       - 
-        id: upload_sha256
+        id: upload_sha1
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.prepare_release.outputs.upload_url }}
-          asset_path: ./${{ env.FILE_SHA256 }}
-          asset_name: ${{ env.FILE_SHA256 }}
+          asset_path: ./${{ env.FILE_SHA1 }}
+          asset_name: ${{ env.FILE_SHA1 }}
           asset_content_type: text/plain
       - 
         id: upload_pkg
