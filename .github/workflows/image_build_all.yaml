@@ -15,7 +15,7 @@ jobs:
         uses: nanzm/get-time-action@v1.1
         with:
           #format: 'YYYYMMDDHHmm'
-          format: 'YY.MM-rc1'
+          format: 'YY.MM'
       - 
         id: release
         uses: actions/create-release@v1
@@ -121,7 +121,7 @@ jobs:
           VERSION: ${{ steps.time.outputs.time }}
         run: |
           sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d rpi4 -e $EDITION -v 21.02rc1
+          sudo buildarmimg -d rpi4 -e $EDITION
           
           ls -lasih /var/cache/manjaro-arm-tools/img
           
@@ -267,7 +267,7 @@ jobs:
           VERSION: ${{ steps.time.outputs.time }}
         run: |
           sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d rpi4 -e $EDITION -v 21.02rc1
+          sudo buildarmimg -d rpi4 -e $EDITION
           
           ls -lasih /var/cache/manjaro-arm-tools/img
           
@@ -413,7 +413,7 @@ jobs:
           VERSION: ${{ steps.time.outputs.time }}
         run: |
           sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d rpi4 -e $EDITION -v 21.02rc1
+          sudo buildarmimg -d rpi4 -e $EDITION
           
           ls -lasih /var/cache/manjaro-arm-tools/img
           
@@ -559,7 +559,7 @@ jobs:
           VERSION: ${{ steps.time.outputs.time }}
         run: |
           sudo mv -v /home/runner/work/rpi4-images/rpi4-images/arm-profiles /usr/share/manjaro-arm-tools/profiles
-          sudo buildarmimg -d rpi4 -e $EDITION -v 21.02rc1
+          sudo buildarmimg -d rpi4 -e $EDITION
           
           ls -lasih /var/cache/manjaro-arm-tools/img
           
