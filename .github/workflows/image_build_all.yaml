@@ -133,6 +133,7 @@ jobs:
 
           echo "FILE_PATH=$(basename $FILE_PATH)" >> $GITHUB_ENV
           echo "FILE_SHA1=$(basename $FILE_PATH).sha1" >> $GITHUB_ENV
+          echo "FILE_TORRENT=$(basename $FILE_PATH.torrent >> $GITHUB_ENV
           
           FILE_PKG=$(find /var/cache/manjaro-arm-tools/img -type f -name "*-pkgs.txt" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PKG .
