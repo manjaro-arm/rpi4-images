@@ -129,7 +129,7 @@ jobs:
           FILE_PATH=$(find /var/cache/manjaro-arm-tools/img -type f -name "*.img.xz" -exec stat -c '%Y %n' {} \; | sort -nr | awk 'NR==1 {print $2}')
           cp -v $FILE_PATH .
           
-          sha1sum $FILE_PATH > $(basename $FILE_PATH).sha1
+          sha1sum $(basename $FILE_PATH) > $(basename $FILE_PATH).sha1
           mktorrent -v -a udp://tracker.opentrackr.org:1337 -l 21 -w https://github.com/$GITHUB_REPOSITORY/releases/download/$VERSION/$(basename $FILE_PATH) -o $(basename $FILE_PATH).torrent $(basename $FILE_PATH)
           
           # Do GPG signing
