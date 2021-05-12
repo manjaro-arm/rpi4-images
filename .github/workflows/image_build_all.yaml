@@ -177,7 +177,7 @@ jobs:
           echo "FILE_PKG=$(basename $FILE_PKG)" >> $GITHUB_ENV
       - 
         id: upload_release 
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -187,7 +187,7 @@ jobs:
           asset_content_type: application/x-iso-image
       - 
         id: upload_sha1
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -197,7 +197,7 @@ jobs:
           asset_content_type: text/plain
       - 
         id: upload_torrent
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -207,7 +207,7 @@ jobs:
           asset_content_type: application/x-bittorrent
       - 
         id: upload_sig
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -217,7 +217,7 @@ jobs:
           asset_content_type: text/plain
       - 
         id: upload_pkg
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
