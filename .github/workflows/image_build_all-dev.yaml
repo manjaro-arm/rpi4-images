@@ -37,7 +37,7 @@ jobs:
     strategy:
       matrix:
         DEVICE: [rpi4]
-        EDITION: [kde-plasma,mate,minimal,xfce]
+        EDITION: [gnome,kde-plasma,mate,minimal,sway,xfce]
         BRANCH: [unstable]
     steps:
       - 
