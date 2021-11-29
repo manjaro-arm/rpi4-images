@@ -23,7 +23,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.time.outputs.time }}
+          tag_name: bigscreen-${{ steps.time.outputs.time }}
           release_name: KDE-Bigscreen ${{ steps.time.outputs.time }}
           draft: false
           prerelease: true
