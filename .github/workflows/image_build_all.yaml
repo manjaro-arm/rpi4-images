@@ -37,9 +37,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.time.outputs.time }}
-          name: Dev ${{ steps.time.outputs.time }}
+          name: Release ${{ steps.time.outputs.time }}
           draft: false
-          prerelease: true
+          prerelease: false
           files: |
             ${{ env.FILE_PATH }}
             ${{ env.FILE_SHA1 }}
