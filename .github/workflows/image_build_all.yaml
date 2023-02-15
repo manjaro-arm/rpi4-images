@@ -19,7 +19,7 @@ jobs:
         id: time
         uses: boredland/get-time-action@2.0.0
         with:
-          format: '22.MM'
+          format: '23.MM'
       -
         id: image-build
         uses: manjaro-arm/rootfs@master
