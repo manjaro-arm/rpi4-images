@@ -1,7 +1,7 @@
 name: image_build_all-dev
 on:
   workflow_dispatch:
-#  schedule:
+  schedule:
     - cron:  '30 2 * * 1'
 
 concurrency:
