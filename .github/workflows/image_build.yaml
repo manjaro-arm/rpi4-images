@@ -1,0 +1,46 @@
+name: Build all the unstable images
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'manjaro lifecycle branch to build against'
+        required: false
+        default: 'unstable'
+        type: choice
+        options:
+        - stable
+        - unstable
+        - testing
+  schedule:
+    - cron:  '30 2 * * 1'
+
+concurrency:
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prepare-release:
+    runs-on: ubuntu-22.04
+    steps:
+      - id: time
+        uses: boredland/get-time-action@dbc808befb89eb33fee64f5f4abce4d2a5fa7cfd # tag=2.0.0
+        with:
+          format: 'YYYYMMDDHHmm'
+    outputs:
+      release_tag: ${{ inputs.branch || "unstable" }}-${{ steps.time.outputs.time }}
+  release:
+    needs: [prepare-release]
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        editon: [gnome,kde-plasma,mate,minimal,xfce]
+    continue-on-error: ${{ matrix.experimental }}
+    steps:
+      - name: build and release
+        uses: manjaro-contrib/action-buildarmimg@main
+        with:
+          device: rpi4
+          edition: ${{ matrix.edition }}
+          branch: ${{ inputs.branch || "unstable" }}
+          release-tag: ${{ needs.prepare-release.outputs.release_tag }}
+          arm-profiles-repo: https://gitlab.manjaro.org/manjaro-arm/applications/manjaro-arm-tools.git
