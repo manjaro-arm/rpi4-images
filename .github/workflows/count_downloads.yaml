@@ -11,7 +11,7 @@ jobs:
     steps:
       - 
         name: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - 
         run: |
           curl -s https://api.github.com/repos/manjaro-arm/rpi4-images/releases | egrep 'download_count'  | cut '-d:' -f 2 | sed 's/,/+/' | xargs echo | xargs -I N echo N 0  | bc >docs/_includes/download_count
